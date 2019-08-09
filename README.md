@@ -41,21 +41,33 @@ $$
 
 ### 1. What is a more generalized name for the RSS curve above? How is it related to machine learning models?
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ### 2. Would you rather choose a $m$ value of 0.08 or 0.03 from the curve up above? In your answer, also explain what it means to move along the curve in relation to the best fit line with respect to $m$. 
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ![](visuals/gd.png)
 
 ### 3. Using the gradient descent visual from above, explain why the distance between each step is getting smaller as more steps occur with gradient descent.
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ### 4. What is the purpose of a learning rate in gradient descent? Explain how a very small and a very large learning rate would affect the gradient descent.
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ---
 ## Extensions to Linear Regression
@@ -164,11 +176,17 @@ fig.savefig("visuals/rsme_poly.png",
             bbox_inches="tight")
 --->
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ### 3. In general what methods would you can use to reduce overfitting and underfitting? Provide an example for both and explain how each technique works to reduce the problems of underfitting and overfitting.
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ### 4. Create the function `train_regularizer` below to train a regularized model and obtain the the testing error. You can use a regularization technique of your choosing.
 
@@ -292,7 +310,10 @@ plt.savefig("visuals/cnf_matrix.png",
 
 ### 2.  What is a real life example of when you would care more about recall than precision? Make sure to include information about errors in your explanation.
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 <!---
 # save preprocessed train/test split objects
@@ -358,7 +379,10 @@ plt.savefig("visuals/many_roc.png",
 <img src = "visuals/many_roc.png" width = "700">
 
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 <!---
 # sorting by 'Purchased' and then dropping the last 130 records
@@ -496,7 +520,10 @@ fig.tight_layout()
 # // your code here
 ```
 
-// your answer here //
+
+```python
+# Your answer here
+```
 
 ### 5. Looking at the decomposition of the time series in `open_monthly_df`, it looks like the peaks are the same value. To confirm or deny this, create a function that returns a dictionary where each key is year and each values is the maximum value from the `seasonal` object for each year.
 

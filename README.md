@@ -11,7 +11,7 @@ This assessment is designed to test your understanding of the Mod 4 material. It
 * Working with Time Series Data
 
 
-Read the instructions carefully. You will be asked both to write code and to respond to a few short answer questions.
+Read the instructions carefully. You will be asked both to write code and respond to a few short answer questions.
 
 ### Note on the short answer questions
 

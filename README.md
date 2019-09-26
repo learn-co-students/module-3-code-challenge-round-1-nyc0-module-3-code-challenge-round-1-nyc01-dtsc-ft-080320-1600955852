@@ -8,7 +8,6 @@ This assessment is designed to test your understanding of the Mod 4 material. It
 * Calculus, Cost Function, and Gradient Descent
 * Extensions to Linear Models
 * Introduction to Logistic Regression
-* Working with Time Series Data
 
 
 Read the instructions carefully. You will be asked both to write code and respond to a few short answer questions.
@@ -18,7 +17,7 @@ Read the instructions carefully. You will be asked both to write code and respon
 For the short answer questions please use your own words. The expectation is that you have not copied and pasted from an external source, even if you consult another source to help craft your response. While the short answer questions are not necessarily being assessed on grammatical correctness or sentence structure, do your best to communicate yourself clearly.
 
 ---
-## Calculus, Cost Function, and Gradient Descent
+## Calculus, Cost Function, and Gradient Descent [Suggested Time: 25 min]
 ---
 
 ![best fit line](visuals/best_fit_line.png)
@@ -46,7 +45,7 @@ $$
 # Your answer here
 ```
 
-### 2. Would you rather choose a $m$ value of 0.08 or 0.03 from the curve up above? In your answer, also explain what it means to move along the curve in relation to the best fit line with respect to $m$. 
+### 2. Would you rather choose a $m$ value of 0.08 or 0.05 from the RSS curve up above?   What is the relation between the position on the cost curve, the error, and the slope of the line?
 
 
 ```python
@@ -70,7 +69,7 @@ $$
 ```
 
 ---
-## Extensions to Linear Regression
+## Extensions to Linear Regression [Suggested Time: 25 min]
 ---
 
 In this section, you're going to be creating linear models that are more complicated than a simple linear regression. In the cells below, we are importing relevant modules that you might need later on. We also load and prepare the dataset for you.
@@ -111,52 +110,50 @@ y = data['sales']
 X_train , X_test, y_train, y_test = train_test_split(X, y,random_state=2019)
 ```
 
-### 1. We'd like to add a bit of complexity to the model created in the example above, and we will do it by adding some polynomial terms. Write a Function to calculate train and test error for different polynomial degrees ranging from (1-10).
+### 1. We'd like to add a bit of complexity to the model created in the example above, and we will do it by adding some polynomial terms. Write a function to calculate train and test error for different polynomial degrees.
 
 This function should:
-* take `poly_degree` as a parameter that will be used to create all different possible polynomial degrees starting at 1 UP TO and including poly_degree
+* take `degree` as a parameter that will be used to create polynomial features to be used in a linear regression model
 * create a PolynomialFeatures object for each degree and fit a linear regression model using the transformed data
-* calculate the root mean square error for each level of polynomial
-* return two lists that contain the `train_errors` and `test_errors` 
+* calculate the mean square error for each level of polynomial
+* return the `train_error` and `test_error` 
 
 
 
 ```python
-def calc_degree(poly_degree):
-    """Calculate train and test error for different polynomial degree (1-10)"""
-    train_error_list = []
-    test_error_list = []
+def polynomial_regression(degree):
+    """
+    Calculate train and test errorfor a linear regression with polynomial features.
+    (Hint: use PolynomialFeatures)
+    
+    input: Polynomial degree
+    output: Mean squared error for train and test set
+    """
     # // your code here //
-    return train_error_list, test_error_list
+    
+    train_error = None
+    test_error = None
+    return train_error, test_error
 ```
+
+#### Try out your new function
 
 
 ```python
-error_train, error_test = calc_degree(10)
+polynomial_regression(3)
 ```
 
-#error_train = [1.633049529710119,
- 0.6544219763525787,
- 0.4923003895833528,
- 0.42636966692892925,
- 0.2552375092236587,
- 0.21455738787043777,
- 0.17677574592197967,
- 0.20526596216126342,
- 0.26914830727034605,
- 0.28892220322372025]
-#error_test = [1.8399932733741966,
- 0.4317931087085349,
- 0.39091400558118194,
- 1.3972328447228304,
- 2.381671115675543,
- 4.672887984282909,
- 5.391079429485139,
- 88.12110401687424,
- 24002.511402029148,
- 177660.21087344288]
+#### Check your answers
 
-### 2. What is the optimal number of degrees for our polynomial features in this model? In general, how does increasing the polynomial degree relate to the Bias/Variance tradeoff? 
+MSE for degree 3:
+- Train: 0.2423596735839209
+- Test: 0.15281375973923944
+
+MSE for degree 4:
+- Train: 0.18179109317368244
+- Test: 1.9522597174462015
+
+### 2. What is the optimal number of degrees for our polynomial features in this model? In general, how does increasing the polynomial degree relate to the Bias/Variance tradeoff?  (Note that this graph shows RMSE and not MSE.)
 
 <img src ="visuals/rsme_poly_2.png" width = "600">
 
@@ -188,35 +185,22 @@ fig.savefig("visuals/rsme_poly.png",
 # Your answer here
 ```
 
-### 4. Create the function `train_regularizer` below to train a regularized model and obtain the the testing error. You can use a regularization technique of your choosing.
-
-We've taken care to load the polynomial transformed data for you, held in X_poly_train and X_poly_test. 
-
-The function should:
-* take in X_train, X_test, y_train, y_test as parameters. We are assuming that the data has already been transformed into a polynomial ^ 10
-* return the root mean square error of the predictions for the test data
-> Hint: Make sure to include all necessary preprocessing steps required when fitting a regularized model!
-
-<!---
-poly = PolynomialFeatures(degree=10, interaction_only=False, include_bias=False)
-X_poly_train = poly.fit_transform(X_train) 
-X_poly_test = poly.transform(X_test)
-pickle.dump(X_poly_train, open("write_data/poly_train_model.pkl", "wb"))
-pickle.dump(X_poly_test, open("write_data/poly_test_model.pkl", "wb"))
---->
+### 4. What is the difference between the two types of regularization for linear regression?
 
 
 ```python
-X_poly_train = pickle.load(open("write_data/poly_train_model.pkl", "rb"))
-X_poly_test = pickle.load(open("write_data/poly_test_model.pkl", "rb"))
+# Your answer here
+```
 
-def train_regularizer(X_train, X_test, y_train, y_test):
-    # // your code here //
-    pass
+### 5. Why is scaling input variables a necessary step before regularization?
+
+
+```python
+# Your answer here
 ```
 
 ---
-## Introduction to Logistic Regression
+## Introduction to Logistic Regression [Suggested Time: 25 min]
 ---
 
 <!---
@@ -430,129 +414,16 @@ print(f"The original classifier has an area under the ROC curve of {auc}.")
 y.value_counts()
 ```
 
-// your answer here //
-
-### 5. Update the inputs in the classification model using a technique to address the issues mentioned up above in question 4. Make sure to use a Logistic Regression model as your classifier.
-
-Be sure to include updates regarding:
-* the accuracy score; and
-* the area under the curve (AUC)
-
 
 ```python
-# // your code here //
-
-# print accuracy
-score_update = None
-print(f"The updated classifier has an accuracy score of {score_update}.")
-
-# print auc
-auc_update = None
-print(f"The updated classifier has an area under the ROC curve of {auc_update}.")
+# // your answer here //
 ```
 
----
-## Time Series
----
+### 5. What methods would you use to address the issues mentioned up above in question 4? 
 
-<!---Create stock_df and save as .pkl
-stocks_df = pd.read_csv("raw_data/all_stocks_5yr.csv")
-stocks_df["clean_date"] = pd.to_datetime(stocks_df["date"], format="%Y-%m-%d")
-stocks_df.drop(["date", "clean_date", "volume", "Name"], axis=1, inplace=True)
-stocks_df.rename(columns={"string_date": "date"}, inplace=True)
-pickle.dump(stocks_df, open("write_data/all_stocks_5yr.pkl", "wb"))
---->
 
 
 ```python
-stocks_df = pickle.load(open("write_data/all_stocks_5yr.pkl", "rb"))
-stocks_df.head()
-```
+# // your answer here //
 
-### 1. Transform the `date` feature so that it becomes a `datetime` object that contains the following format: YYYY-MM-DD and set `date` to be the index of `stocks_df`.
-
-
-```python
-# // your code here //
-```
-
-### 2. Perform monthly upsampling on `stocks_df` that takes the mean of the `open`, `high`, `low`, and `close` features on a monthly basis. Store the results in `stocks_monthly_df`.
-
-> Hint: `stocks_monthly_df` should have 61 rows and 4 columns after you perform upsampling.
-
-
-```python
-# // your code here //
-```
-
-### 3. Create a line graph that visualizes the monthly open stock prices from `stocks_monthly_df` for the purposes of identifying if average monthly open stock price is stationary or not using the rolling mean and rolling standard deviation.
-
-> Hint: 
-> * store your sliced version of `stocks_monthly_df` in a new DataFrame called `open_monthly_df`;
-> * use a window size of 3 to represent one quarter of time in a year
-
-
-```python
-# // your code here //
-
-open_monthly_df = None
-
-rolmean = None
-rolstd = None
-
-# note: do not rename the objects otherwise the plot code will not work
-fig, ax = plt.subplots(figsize=(13, 10))
-ax.plot(open_monthly_df, color="blue",label="Average monthly opening stock price")
-ax.plot(rolmean, color="red", label="Rolling quarterly mean")
-ax.plot(rolstd, color="black", label="Rolling quarterly std. deviation")
-ax.set_ylim(0, 120)
-ax.legend()
-fig.suptitle("Average monthly open stock prices, Feb. 2013 to Feb. 2018")
-fig.tight_layout()
-```
-
-// your answer here //
-
-### 4. Use the Dickey-Fuller Test to identify if `open_monthly_df` is stationary. Does this confirm your answer from Question 3? Explain why the time series is stationary or not based on the output from the Dickey-Fuller Test.
-
-
-```python
-# // your code here
-```
-
-
-```python
-# Your answer here
-```
-
-### 5. Looking at the decomposition of the time series in `open_monthly_df`, it looks like the peaks are the same value. To confirm or deny this, create a function that returns a dictionary where each key is year and each values is the maximum value from the `seasonal` object for each year.
-
-
-```python
-from statsmodels.tsa.seasonal import seasonal_decompose
-decomposition = seasonal_decompose(np.log(open_monthly_df))
-
-# Gather the trend, seasonality and noise of decomposed object
-seasonal = decomposition.seasonal
-
-# Plot gathered statistics
-plt.figure(figsize=(13, 10))
-plt.plot(seasonal,label='Seasonality', color="blue")
-plt.title("Seasonality of average monthly open stock prices, Feb. 2013 to Feb. 2018")
-plt.ylabel("Average monthly open stock prices")
-plt.tight_layout()
-plt.show()
-```
-
-
-```python
-def calc_yearly_max(seasonal_series):
-    """Returns the max seasonal value for each year"""
-    # // your code here //
-    pass
-```
-
-
-```python
-calc_yearly_max(seasonal)
 ```

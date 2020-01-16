@@ -425,7 +425,7 @@ For this next section feel free to refer to the scikit learn documentation on [d
 ```
 
 ---
-## Part 4: Ensemble Methods [Suggested Time: 15 min]
+## Part 4: Ensemble Methods [Suggested Time: 10 min]
 ---
 
 ### Random Forests and Hyperparameter Tuning using GridSearchCV
@@ -513,61 +513,4 @@ rfc = None
 cv_rfc = None 
 
 cv_rfc.fit(None, None)
-```
-
-### 4.4) What are the best training parameters found by GridSearchCV?
-
-_Hint: Explore the documentation for GridSearchCV._ 
-
-
-```python
-# Replace None with appropriate code 
-None 
-```
-
-In the cell below, we create a variable `best_model` that holds the best model found by the grid search.
-
-
-```python
-best_model = cv_rfc.best_estimator_
-```
-
-Next, we give you a function that creates a horizontal bar plot to visualize the feature importances of a model, sorted in descending order. 
-
-
-```python
-import matplotlib.pyplot as plt 
-%matplotlib inline 
-
-def create_plot_of_feature_importances(model, X):
-    ''' 
-    Inputs: 
-    
-    model: A trained ensemble model instance
-    X: a dataframe of the features used to train the model
-    '''
-    
-    feat_importances = model.feature_importances_
-
-    features_and_importances = zip(X.columns, feat_importances)
-    features_and_importances = sorted(features_and_importances, 
-                                     key = lambda x: x[1], reverse=True)
-    
-    features = [i[0] for i in features_and_importances]
-    importances = [i[1] for i in features_and_importances]
-    
-    plt.figure(figsize=(10, 6))
-    plt.barh(features, importances)
-    plt.gca().invert_yaxis()
-    plt.title('Feature Importances')
-    plt.xlabel('importance')
-```
-
-### 4.5) Create a plot of the best model's feature importances.
-
-_Hint: To create the plot, pass the appropriate parameters to the function above._
-
-
-```python
-# Your code here.
 ```

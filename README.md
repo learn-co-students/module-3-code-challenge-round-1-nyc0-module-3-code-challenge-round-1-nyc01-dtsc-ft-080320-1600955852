@@ -1,21 +1,20 @@
 
-<h1 align="center">Module 3 Code Challenge</h1>
+# Module 3 Code Challenge
 
 ## Overview
 
-This assessment is designed to test your understanding of the Mod 3 materials. It covers:
+This assessment is designed to test your understanding of the Module 3 materials. It covers:
 
 * Calculus, Cost Function, and Gradient Descent
-* Introduction to Logistic Regression
+* Logistic Regression
 * Decision Trees
-* Ensemble Models 
+* Ensemble Methods 
 
-
-Read the instructions carefully. You will be asked both to write code and respond to a few short answer questions.
+_Read the instructions carefully._ You will be asked both to write code and respond to a few short answer questions.
 
 ### Note on the short answer questions
 
-For the short answer questions please use your own words. The expectation is that you have not copied and pasted from an external source, even if you consult another source to help craft your response. While the short answer questions are not necessarily being assessed on grammatical correctness or sentence structure, do your best to communicate yourself clearly.
+For the short answer questions, _please use your own words._ The expectation is that you have **not** copied and pasted from an external source, even if you consult another source to help craft your response. While the short answer questions are not necessarily being assessed on grammatical correctness or sentence structure, do your best to communicate yourself clearly.
 
 ---
 ## Part 1: Calculus, Cost Function, and Gradient Descent [Suggested Time: 25 min]
@@ -43,14 +42,18 @@ $$
 
 
 ```python
-# Your answer here
+"""
+Written answer here
+"""
 ```
 
 ### 1.2) Would you rather choose a $m$ value of 0.08 or 0.05 from the RSS curve up above?   What is the relation between the position on the cost curve, the error, and the slope of the line?
 
 
 ```python
-# Your answer here
+"""
+Written answer here
+"""
 ```
 
 ![](visuals/gd.png)
@@ -59,135 +62,75 @@ $$
 
 
 ```python
-# Your answer here
+"""
+Written answer here
+"""
 ```
 
 ### 1.4) What is the purpose of a learning rate in gradient descent? Explain how a very small and a very large learning rate would affect the gradient descent.
 
 
 ```python
-# Your answer here
+"""
+Written answer here
+"""
 ```
 
 ---
-## Part 2: Introduction to Logistic Regression [Suggested Time: 25 min]
+## Part 2: Logistic Regression [Suggested Time: 25 min]
 ---
 
-<!---
-# load data
-ads_df = pd.read_csv("raw_data/social_network_ads.csv")
-
-# one hot encode categorical feature
-def is_female(x):
-    """Returns 1 if Female; else 0"""
-    if x == "Female":
-        return 1
-    else:
-        return 0
-        
-ads_df["Female"] = ads_df["Gender"].apply(is_female)
-ads_df.drop(["User ID", "Gender"], axis=1, inplace=True)
-ads_df.head()
-
-# separate features and target
-X = ads_df.drop("Purchased", axis=1)
-y = ads_df["Purchased"]
-
-# train/test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=19)
-
-# preprocessing
-scale = StandardScaler()
-scale.fit(X_train)
-X_train = scale.transform(X_train)
-X_test = scale.transform(X_test)
-
-# save preprocessed train/test split objects
-pickle.dump(X_train, open("write_data/social_network_ads/X_train_scaled.pkl", "wb"))
-pickle.dump(X_test, open("write_data/social_network_ads/X_test_scaled.pkl", "wb"))
-pickle.dump(y_train, open("write_data/social_network_ads/y_train.pkl", "wb"))
-pickle.dump(y_test, open("write_data/social_network_ads/y_test.pkl", "wb"))
-
-# build model
-model = LogisticRegression(C=1e5, solver="lbfgs")
-model.fit(X_train, y_train)
-y_test_pred = model.predict(X_test)
-y_train_pred = model.predict(X_train)
-
-from sklearn.metrics import confusion_matrix
-
-# create confusion matrix
-# tn, fp, fn, tp
-cnf_matrix = confusion_matrix(y_test, y_test_pred)
-cnf_matrix
-
-# build confusion matrix plot
-plt.imshow(cnf_matrix,  cmap=plt.cm.Blues) #Create the basic matrix.
-
-# Add title and Axis Labels
-plt.title('Confusion Matrix')
-plt.ylabel('True label')
-plt.xlabel('Predicted label')
-
-# Add appropriate Axis Scales
-class_names = set(y_test) #Get class labels to add to matrix
-tick_marks = np.arange(len(class_names))
-plt.xticks(tick_marks, class_names)
-plt.yticks(tick_marks, class_names)
-
-# Add Labels to Each Cell
-thresh = cnf_matrix.max() / 2. #Used for text coloring below
-#Here we iterate through the confusion matrix and append labels to our visualization.
-for i, j in itertools.product(range(cnf_matrix.shape[0]), range(cnf_matrix.shape[1])):
-        plt.text(j, i, cnf_matrix[i, j],
-                 horizontalalignment="center",
-                 color="white" if cnf_matrix[i, j] > thresh else "black")
-
-# Add a Side Bar Legend Showing Colors
-plt.colorbar()
-
-# Add padding
-plt.tight_layout()
-plt.savefig("visuals/cnf_matrix.png",
-            dpi=150,
-            bbox_inches="tight")
---->
+### 2.1) Using the confusion matrix below, calculate precision, recall, and F-1 score.
 
 ![cnf matrix](visuals/cnf_matrix.png)
 
-### 2.1) Using the confusion matrix up above, calculate precision, recall, and F-1 score.
+
+```python
+# Code here to calculate precision
+```
 
 
 ```python
-# // your code here //
+# Code here to calculate recall
 ```
 
-### 2.2) Pick the best ROC curve from this graph and explain your choice. 
 
-*Note: each ROC curve represents one model, each labeled with the feature(s) inside each model*.
+```python
+# Code here to calculate F-1 score
+```
+
+### 2.2) Pick the best ROC curve from the below graph and explain your choice. 
+
+Note: each ROC curve represents one model, each labeled with the feature(s) inside each model.
 
 <img src = "visuals/many_roc.png" width = "700">
 
 
 
 ```python
-# Your answer here
+"""
+Written answer here
+"""
 ```
 
-<!---
-# sorting by 'Purchased' and then dropping the last 130 records
-dropped_df = ads_df.sort_values(by="Purchased")[:-130]
-dropped_df.reset_index(inplace=True)
-pickle.dump(dropped_df, open("write_data/sample_network_data.pkl", "wb"))
---->
+### 2.3) The model below has an accuracy score that might be too good to believe. Using `y.value_counts()`, explain how `y` is affecting the accuracy score.
 
 
 ```python
-network_df = pickle.load(open("write_data/sample_network_data.pkl", "rb"))
+# Run this cell without changes
+
+# Include relevant imports
+import pickle
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler 
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, roc_curve, roc_auc_score
+
+network_df = pickle.load(open('write_data/sample_network_data.pkl', 'rb'))
 
 # partion features and target 
-X = network_df.drop("Purchased", axis=1)
-y = network_df["Purchased"]
+X = network_df.drop('Purchased', axis=1)
+y = network_df['Purchased']
 
 # train test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2019)
@@ -199,39 +142,41 @@ X_train = scale.transform(X_train)
 X_test = scale.transform(X_test)
 
 # build classifier
-model = LogisticRegression(C=1e5, solver="lbfgs")
-model.fit(X_train,y_train)
+model = LogisticRegression(C=1e5, solver='lbfgs')
+model.fit(X_train, y_train)
 y_test_pred = model.predict(X_test)
 
 # get the accuracy score
-print(f"The original classifier has an accuracy score of {round(accuracy_score(y_test, y_test_pred), 3)}.")
+print(f'The original classifier has an accuracy score of {round(accuracy_score(y_test, y_test_pred), 3)}.')
 
 # get the area under the curve from an ROC curve
 y_score = model.decision_function(X_test)
 fpr, tpr, _ = roc_curve(y_test, y_score)
 auc = round(roc_auc_score(y_test, y_score), 3)
-print(f"The original classifier has an area under the ROC curve of {auc}.")
+print(f'The original classifier has an area under the ROC curve of {auc}.')
 ```
-
-### 2.3) The model above has an accuracy score that might be too good to believe. Using `y.value_counts()`, explain how `y` is affecting the accuracy score.
 
 
 ```python
+# Run this cell without changes
+
 y.value_counts()
 ```
 
 
 ```python
-# // your answer here //
+"""
+Written answer here
+"""
 ```
 
-### 2.4) What methods would you use to address the issues mentioned up above in question 4? 
-
+### 2.4) What methods would you use to address the issues in Question 2.3? 
 
 
 ```python
-# // your answer here //
-
+"""
+Written answer here
+"""
 ```
 
 ---
@@ -241,22 +186,26 @@ y.value_counts()
 ### Concepts 
 You're given a dataset of **30** elements, 15 of which belong to a positive class (denoted by *`+`* ) and 15 of which do not (denoted by `-`). These elements are described by two attributes, A and B, that can each have either one of two values, true or false. 
 
-The diagrams below show the result of splitting the dataset by attribute: the diagram on the left hand side shows that if we split by Attribute A there are 13 items of the positive class and 2 of the negative class in one branch and 2 of the positive and 13 of the negative in the other branch. The right hand side shows that if we split the data by Attribute B there are 8 items of the positive class and 7 of the negative class in one branch and 7 of the positive and 8 of the negative in the other branch.
+The diagrams below show the result of splitting the dataset by attribute: the diagram on the left hand side shows that if we split by attribute A there are 13 items of the positive class and 2 of the negative class in one branch and 2 of the positive and 13 of the negative in the other branch. The right hand side shows that if we split the data by attribute B there are 8 items of the positive class and 7 of the negative class in one branch and 7 of the positive and 8 of the negative in the other branch.
 
 <img src="visuals/decision_stump.png">
 
-### 3.1) Which one of the two attributes resulted in the best split of the original data? How do you select the best attribute to split a tree at each node? _(Hint: Mention splitting criteria)_
+### 3.1) Which one of the two attributes resulted in the best split of the original data? How do you select the best attribute to split a tree at each node? 
+
+It may be helpful to discuss splitting criteria.
 
 
 ```python
-# Your answer here 
+"""
+Written answer here
+"""
 ```
 
 ### Decision Trees for Regression 
 
 In this section, you will use decision trees to fit a regression model to the Combined Cycle Power Plant dataset. 
 
-This dataset is from the UCI ML Dataset Repository, and has been included in the `data` folder of this repository as an Excel `.xlsx` file, `Folds5x2_pp.xlsx`. 
+This dataset is from the UCI ML Dataset Repository, and has been included in the `data` folder of this repository as an Excel `.xlsx` file, `'Folds5x2_pp.xlsx'`. 
 
 The features of this dataset consist of hourly average ambient variables taken from various sensors located around a power plant that record the ambient variables every second.  
 - Temperature (AT) 
@@ -272,6 +221,8 @@ In the cells below, we import `pandas` and `numpy` for you, and we load the data
 
 
 ```python
+# Run this cell without changes
+
 import pandas as pd 
 import numpy as np 
 
@@ -282,98 +233,25 @@ df = pd.read_excel(filename)
 
 
 ```python
-# Inspect the first five rows of the dataframe
+# Inspect the first five rows of the DataFrame
 df.head()
 ```
 
 
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AT</th>
-      <th>V</th>
-      <th>AP</th>
-      <th>RH</th>
-      <th>PE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>14.96</td>
-      <td>41.76</td>
-      <td>1024.07</td>
-      <td>73.17</td>
-      <td>463.26</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>25.18</td>
-      <td>62.96</td>
-      <td>1020.04</td>
-      <td>59.08</td>
-      <td>444.37</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5.11</td>
-      <td>39.40</td>
-      <td>1012.16</td>
-      <td>92.14</td>
-      <td>488.56</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>20.86</td>
-      <td>57.32</td>
-      <td>1010.24</td>
-      <td>76.64</td>
-      <td>446.48</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>10.82</td>
-      <td>37.50</td>
-      <td>1009.23</td>
-      <td>96.62</td>
-      <td>473.90</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
 ```python
-# Get the shape of the dataframe 
+# Get the shape of the DataFrame 
 df.shape
 ```
 
-Before fitting any models, you need to create training and testing splits for the data.
+Before fitting any models, you need to create training and test splits for the data.
 
-Below, we split the data into features and target ('PE') for you. 
+Below, we split the data into features and target (`'PE'`) for you. 
 
 
 ```python
-X = df[df.columns.difference(['PE'])]
+# Run this cell without changes
+
+X = df.drop(columns=['PE'], axis=1)
 y = df['PE']
 ```
 
@@ -381,47 +259,58 @@ y = df['PE']
 
 
 ```python
-# Your code here. Replace None with appropriate code. 
+# Code here 
+# Replace None with appropriate code  
 
 X_train, X_test, y_train, y_test = None
 ```
 
-### 3.3) Fit a vanilla decision tree regression model with scikit-learn to the training data.** Set `random_state = 1` for reproducibility. **Evaluate the model on the test data.
+### 3.3) Fit a vanilla decision tree regression model with scikit-learn to the training data. Set `random_state=1` for reproducibility. Evaluate the model on the test data.
 
 
 ```python
-# Your code here 
+# Code here 
 ```
 
-### 3.4) Obtain the mean squared error, mean absolute error, and coefficient of determination (r2 score) of the predictions on the test set. _Hint: Look at the `sklearn.metrics` module._
+### 3.4) Obtain the mean squared error, mean absolute error, and coefficient of determination (r2 score) of the predictions on the test set. 
+
+You can use the `sklearn.metrics` module.
 
 
 ```python
-# Your code here. Replace None with appropriate code. 
+# Code here 
+# Replace None with appropriate code 
 
-print("Mean Squared Error:", None)
-print("Mean Absolute Error:", None)
-print("R-squared:", None)
+print('Mean Squared Error:', None)
+print('Mean Absolute Error:', None)
+print('R-squared:', None)
 ```
 
-Hint: MSE = 22.21041691053512
+Hint: MSE = 22.21 
 
 ### Hyperparameter Tuning of Decision Trees for Regression
 
-For this next section feel free to refer to the scikit learn documentation on [decision tree regressors](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html)
+For this next section feel free to refer to the scikit learn documentation on [decision tree regressors](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html). 
 
-### 3.5) Add hyperparameters to a a new decision tree and fit it to our training data and evaluate the model with the test data.
+### 3.5) Add hyperparameters to a new decision tree and fit it to our training data. Evaluate the model with the test data.
 
 
 ```python
-# Your code here 
+# Code here 
 ```
 
 ### 3.6) Obtain the mean squared error, mean absolute error, and coefficient of determination (r2 score) of the predictions on the test set. Did this improve your previous model? (It's ok if it didn't)
 
 
 ```python
-# Your answer and explanation here
+# Code here
+```
+
+
+```python
+"""
+Written answer here
+"""
 ```
 
 ---
@@ -430,7 +319,7 @@ For this next section feel free to refer to the scikit learn documentation on [d
 
 ### Random Forests and Hyperparameter Tuning using GridSearchCV
 
-In this section, you will perform hyperparameter tuning for a Random Forest classifier using GridSearchCV. You will use `scikit-learn`'s wine dataset to classify wines into one of three different classes. 
+In this section, you will perform hyperparameter tuning for a Random Forest classifier using GridSearchCV. You will use scikit-learn's wine dataset to classify wines into one of three different classes. 
 
 After finding the best estimator, you will interpret the best model's feature importances. 
 
@@ -438,6 +327,8 @@ In the cells below, we have loaded the relevant imports and the wine data for yo
 
 
 ```python
+# Run this cell without changes
+
 # Relevant imports 
 from sklearn.datasets import load_wine
 
@@ -450,15 +341,17 @@ y.name = 'target'
 df = pd.concat([X, y.to_frame()], axis=1)
 ```
 
-In the cells below, we inspect the first five rows of the dataframe and compute the dataframe's shape.
+In the cells below, we inspect the first five rows of the DataFrame and compute the DataFrame's shape.
 
 
 ```python
+# Inspect the first five rows of the DataFrame
 df.head()
 ```
 
 
 ```python
+# Get the shape of the DataFrame 
 df.shape
 ```
 
@@ -466,17 +359,41 @@ We also get descriptive statistics for the dataset features, and obtain the dist
 
 
 ```python
+# Get descriptive statistics for the features
 X.describe()
 ```
 
 
 ```python
+# Obtain distribution of classes
 y.value_counts().sort_index()
 ```
 
-You will now perform hyper-parameter tuning for a Random Forest classifier.
+You will now perform hyperparameter tuning for a Random Forest classifier.
 
-### 4.1) Construct a `param_grid` dictionary to pass to `GridSearchCV` when instantiating the object. Choose at least 3 hyper-parameters to tune and 3 values for each.
+In the cell below, we include the relevant imports for you.
+
+
+```python
+# Run this cell without changes
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+```
+
+### 4.1) Create an instance of a Random Forest classifier estimator. Call the instance `rfc`. 
+
+Make sure to set `random_state=42` for reproducibility. 
+
+
+```python
+# Replace None with appropriate code
+rfc = None
+```
+
+### 4.2) Construct a `param_grid` dictionary to pass to `GridSearchCV` when instantiating the object. 
+
+Choose at least three hyperparameters to tune, and at least three values for each.
 
 
 ```python
@@ -486,26 +403,10 @@ param_grid = None
 
 Now that you have created the `param_grid` dictionary of hyperparameters, let's continue performing hyperparameter optimization of a Random Forest Classifier. 
 
-In the cell below, we include the relevant imports for you.
-
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import GridSearchCV
-```
-
-### 4.2) Create an instance of a Random Forest classifier estimator; call it `rfc`. Make sure to set `random_state=42` for reproducibility. 
-
-
-```python
-# Replace None with appropriate code
-rfc = None
-```
-
 ### 4.3) Create an instance of an `GridSearchCV` object and fit it to the data. Call the instance `cv_rfc`. 
 
-* Use the random forest classification estimator you instantiated in the cell above, the parameter grid dictionary constructed, and make sure to perform 5-fold cross validation. 
-* The fitting process should take 10 - 15 seconds to complete. 
+- Use the random forest classification estimator you instantiated above, the parameter grid dictionary you constructed, and make sure to perform 5-fold cross validation. 
+- The fitting process should take 10-15 seconds to complete. 
 
 
 ```python

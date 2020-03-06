@@ -43,7 +43,7 @@ $$
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -52,7 +52,7 @@ Written answer here
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -63,7 +63,7 @@ Written answer here
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -72,7 +72,7 @@ Written answer here
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -80,40 +80,41 @@ Written answer here
 ## Part 2: Logistic Regression [Suggested Time: 25 min]
 ---
 
-### 2.1) Using the confusion matrix below, calculate precision, recall, and F-1 score.
-
 ![cnf matrix](visuals/cnf_matrix.png)
 
+### 2.1) Using the confusion matrix above, calculate precision, recall, and F-1 score.
+
+Show your work, not just your final numeric answer
+
 
 ```python
-# Code here to calculate precision
+# Your code here to calculate precision
 ```
 
 
 ```python
-# Code here to calculate recall
+# Your code here to calculate recall
 ```
 
 
 ```python
-# Code here to calculate F-1 score
+# Your code here to calculate F-1 score
 ```
-
-### 2.2) Pick the best ROC curve from the below graph and explain your choice. 
-
-Note: each ROC curve represents one model, each labeled with the feature(s) inside each model.
 
 <img src = "visuals/many_roc.png" width = "700">
 
+### 2.2) Pick the best ROC curve from the above graph and explain your choice. 
+
+Note: each ROC curve represents one model, each labeled with the feature(s) inside each model.
 
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
-### 2.3) The model below has an accuracy score that might be too good to believe. Using `y.value_counts()`, explain how `y` is affecting the accuracy score.
+The following cell includes code to train and evaluate a model
 
 
 ```python
@@ -156,6 +157,8 @@ auc = round(roc_auc_score(y_test, y_score), 3)
 print(f'The original classifier has an area under the ROC curve of {auc}.')
 ```
 
+### 2.3) The model above has an accuracy score that might be too good to believe. Using `y.value_counts()`, explain how `y` is affecting the accuracy score.
+
 
 ```python
 # Run this cell without changes
@@ -166,7 +169,7 @@ y.value_counts()
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -175,7 +178,7 @@ Written answer here
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -197,7 +200,7 @@ It may be helpful to discuss splitting criteria.
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -205,7 +208,7 @@ Written answer here
 
 In this section, you will use decision trees to fit a regression model to the Combined Cycle Power Plant dataset. 
 
-This dataset is from the UCI ML Dataset Repository, and has been included in the `data` folder of this repository as an Excel `.xlsx` file, `'Folds5x2_pp.xlsx'`. 
+This dataset is from the UCI ML Dataset Repository, and has been included in the `raw_data` folder of this repository as an Excel `.xlsx` file, `'Folds5x2_pp.xlsx'`. 
 
 The features of this dataset consist of hourly average ambient variables taken from various sensors located around a power plant that record the ambient variables every second.  
 - Temperature (AT) 
@@ -233,12 +236,14 @@ df = pd.read_excel(filename)
 
 
 ```python
+# Run this cell without changes
 # Inspect the first five rows of the DataFrame
 df.head()
 ```
 
 
 ```python
+# Run this cell without changes
 # Get the shape of the DataFrame 
 df.shape
 ```
@@ -259,7 +264,6 @@ y = df['PE']
 
 
 ```python
-# Code here 
 # Replace None with appropriate code  
 
 X_train, X_test, y_train, y_test = None
@@ -267,9 +271,11 @@ X_train, X_test, y_train, y_test = None
 
 ### 3.3) Fit a vanilla decision tree regression model with scikit-learn to the training data. Set `random_state=1` for reproducibility. Evaluate the model on the test data.
 
+For the rest of this section feel free to refer to the scikit-learn documentation on [decision tree regressors](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html). 
+
 
 ```python
-# Code here 
+# Your code here 
 ```
 
 ### 3.4) Obtain the mean squared error, mean absolute error, and coefficient of determination (r2 score) of the predictions on the test set. 
@@ -278,7 +284,9 @@ You can use the `sklearn.metrics` module.
 
 
 ```python
-# Code here 
+# Your code imports here
+
+
 # Replace None with appropriate code 
 
 print('Mean Squared Error:', None)
@@ -286,30 +294,28 @@ print('Mean Absolute Error:', None)
 print('R-squared:', None)
 ```
 
-Hint: MSE = 22.21 
+Hint: MSE should be about 22.21 
 
 ### Hyperparameter Tuning of Decision Trees for Regression
-
-For this next section feel free to refer to the scikit learn documentation on [decision tree regressors](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html). 
 
 ### 3.5) Add hyperparameters to a new decision tree and fit it to our training data. Evaluate the model with the test data.
 
 
 ```python
-# Code here 
+# Your code here 
 ```
 
 ### 3.6) Obtain the mean squared error, mean absolute error, and coefficient of determination (r2 score) of the predictions on the test set. Did this improve your previous model? (It's ok if it didn't)
 
 
 ```python
-# Code here
+# Your code here
 ```
 
 
 ```python
 """
-Written answer here
+Your written answer here
 """
 ```
 
@@ -345,12 +351,14 @@ In the cells below, we inspect the first five rows of the DataFrame and compute 
 
 
 ```python
+# Run this cell without changes
 # Inspect the first five rows of the DataFrame
 df.head()
 ```
 
 
 ```python
+# Run this cell without changes
 # Get the shape of the DataFrame 
 df.shape
 ```
@@ -359,12 +367,14 @@ We also get descriptive statistics for the dataset features, and obtain the dist
 
 
 ```python
+# Run this cell without changes
 # Get descriptive statistics for the features
 X.describe()
 ```
 
 
 ```python
+# Run this cell without changes
 # Obtain distribution of classes
 y.value_counts().sort_index()
 ```
@@ -397,7 +407,7 @@ Choose at least three hyperparameters to tune, and at least three values for eac
 
 
 ```python
-# Replace None with relevant code 
+# Replace None with appropriate code 
 param_grid = None
 ```
 
@@ -414,4 +424,9 @@ Now that you have created the `param_grid` dictionary of hyperparameters, let's 
 cv_rfc = None 
 
 cv_rfc.fit(None, None)
+```
+
+
+```python
+
 ```

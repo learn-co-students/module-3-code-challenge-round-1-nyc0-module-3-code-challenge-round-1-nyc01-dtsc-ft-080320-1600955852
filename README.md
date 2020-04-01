@@ -425,8 +425,3 @@ cv_rfc = None
 
 cv_rfc.fit(None, None)
 ```
-
-
-```python
-
-```

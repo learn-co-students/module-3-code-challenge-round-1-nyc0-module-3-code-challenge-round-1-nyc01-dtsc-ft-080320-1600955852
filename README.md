@@ -89,7 +89,7 @@ Your written answer here
 """
 ```
 
-### 2.2) What is one advantage that logistic regression can have over other classification methods?
+### 2.2) Compare logistic regression to another classification model of your choice (e.g. KNN, Decision Tree, etc.). What is one advantage and one disadvantage it has when compared with the other model?
 
 
 ```python
@@ -191,7 +191,7 @@ Your written answer here
 """
 ```
 
-### 3.4) What method could you use to address the issue discovered in Question 3.3? 
+### 3.4) What is one method you could use to improve your model to address the issue discovered in Question 3.3?
 
 
 ```python
@@ -268,7 +268,7 @@ y.value_counts()
 X_train, X_test, y_train, y_test = None
 ```
 
-### 4.3) Fit a decision tree model with scikit-learn to the training data. Use parameter defaults, except for `random_state=1`. Use the fitted classifier to generate predictions for the test data.
+### 4.3) Fit a decision tree model with scikit-learn to the training data. Use parameter defaults and `random_state=1` for this model. Then use the fitted classifier to generate predictions for the test data.
 
 You can use the Scikit-learn DecisionTreeClassifier (docs [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html))
 
@@ -301,7 +301,7 @@ You can use the `sklearn.metrics` module.
 # Your code here 
 ```
 
-### 4.6) Do the accuracy score or confusion matrix reveal any substantial problems with this model's performance? Explain your answer.
+### 4.6) Based on the accuracy score and confusion matrix, does the model seem to be performing well or to have substantial performance issues? Explain your answer.
 
 
 ```python

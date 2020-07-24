@@ -80,7 +80,7 @@ Your written answer here
 ## Part 2: Logistic Regression [Suggested Time: 15 min]
 ---
 
-### 2.1) Why is logistic regression typically better than linear regession for modeling a binary target/outcome?
+### 2.1) Why is logistic regression typically better than linear regression for modeling a binary target/outcome?
 
 
 ```python
@@ -205,7 +205,7 @@ Your written answer here
 ---
 
 ### Concepts 
-You're given a dataset of **30** elements, 15 of which belong to a positive class (denoted by *`+`* ) and 15 of which do not (denoted by `-`). These elements are described by two attributes, A and B, that can each have either one of two values, true or false. 
+You're given a dataset of **30** elements, 15 of which belong to a positive class (denoted by `+` ) and 15 of which do not (denoted by `-`). These elements are described by two attributes, A and B, that can each have either one of two values, true or false. 
 
 The diagrams below show the result of splitting the dataset by attribute: the diagram on the left hand side shows that if we split by attribute A there are 13 items of the positive class and 2 of the negative class in one branch and 2 of the positive and 13 of the negative in the other branch. The right hand side shows that if we split the data by attribute B there are 8 items of the positive class and 7 of the negative class in one branch and 7 of the positive and 8 of the negative in the other branch.
 
